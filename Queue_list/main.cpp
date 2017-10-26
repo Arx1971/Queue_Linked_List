@@ -2,7 +2,9 @@
 #include <algorithm>
 #include <string>
 #include <queue>
+
 #define null NULL
+
 using namespace std;
 
 struct q_node{
@@ -60,8 +62,21 @@ int q_back(q_node *head){
 	return head -> data;
 }
 
-q_node *q_pop(q_node *head){
-	// working 
+void q_pop(q_node *head){
+	if(!q_isempty(head)){
+		while(head!=null){
+			if(head -> next == null){
+				head = null;
+				return;
+			}
+			else if(head -> next -> next == null){
+				head -> next = null;
+				cout << "Data Remove: " << endl;
+				return;
+			}
+			head = head -> next;
+		}
+	}
 }
 
 int main(){
@@ -87,8 +102,17 @@ int main(){
 	cout << "Queue Front: " << q_front(myqueue) << endl;
 	cout << "Queue Empty: " << bool(q_isempty(myqueue)) << endl;
 	cout << "Queue Back: " << q_back(myqueue) << endl;
-	myqueue = q_pop(myqueue);
+	q_pop(myqueue);
 	display(myqueue);
-	
+	q_pop(myqueue);
+	display(myqueue);
+	q_pop(myqueue);
+	display(myqueue);
+	q_pop(myqueue);
+	display(myqueue);
+	cout << "Queue Empty: " << bool(q_isempty(myqueue)) << endl;
+	q_clear(myqueue);
+	display(myqueue);
+	cout << "Queue Size: " << q_size(myqueue) << endl;
 	return 0;
 }
