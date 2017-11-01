@@ -63,20 +63,7 @@ int q_back(q_node *head){
 }
 
 void q_pop(q_node *head){
-	if(!q_isempty(head)){
-		while(head!=null){
-			if(head -> next == null){
-				head = null;
-				return;
-			}
-			else if(head -> next -> next == null){
-				head -> next = null;
-				cout << "Data Remove: " << endl;
-				return;
-			}
-			head = head -> next;
-		}
-	}
+	
 }
 
 int main(){
@@ -111,7 +98,7 @@ int main(){
 	q_pop(myqueue);
 	display(myqueue);
 	cout << "Queue Empty: " << bool(q_isempty(myqueue)) << endl;
-	q_clear(myqueue);
+	//myqueue = q_clear(myqueue);
 	display(myqueue);
 	cout << "Queue Size: " << q_size(myqueue) << endl;
 	return 0;
